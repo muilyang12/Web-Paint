@@ -23,7 +23,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
                 // Allow cross-origin requests from the specified origin
-                .setAllowedOriginPatterns("http://localhost:3333")
+                .setAllowedOriginPatterns("http://localhost:5173")
                 // Enable SockJS fallback for browsers that don't support WebSocket
                 .withSockJS();
     }
