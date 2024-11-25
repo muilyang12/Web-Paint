@@ -8,6 +8,15 @@ pipeline {
             }
         }
 
+        stage("Set Gradle Wrapper Permissions") {
+            steps {
+                dir("webpaint-be") {
+                    sh "chmod +x gradlew"
+                }
+            }
+        }
+
+
         stage("Build") {
             steps {
                 dir("webpaint-be") {
