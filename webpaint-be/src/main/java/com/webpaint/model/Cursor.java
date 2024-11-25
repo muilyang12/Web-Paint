@@ -2,24 +2,24 @@ package com.webpaint.model;
 
 public class Cursor {
 
-    private double x;
-    private double y;
+    private double relativeX;
+    private double relativeY;
     private String name;
 
-    public double getX() {
-        return x;
+    public double getRelativeX() {
+        return relativeX;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public void setRelativeX(double x) {
+        this.relativeX = x;
     }
 
-    public double getY() {
-        return y;
+    public double getRelativeY() {
+        return relativeY;
     }
 
-    public void setY(double y) {
-        this.y = y;
+    public void setRelativeY(double y) {
+        this.relativeY = y;
     }
 
     public String getName() {
