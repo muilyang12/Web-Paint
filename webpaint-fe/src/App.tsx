@@ -1,19 +1,13 @@
 import "./App.css";
-import { useStompClient } from "./hooks/useStompClient";
+import useStompClient from "./hooks/useStompClient";
+import useCanvasEvent from "./hooks/useCanvasDrawing";
 
 function App() {
-  const { sendMessage } = useStompClient();
-  const handleClick = () => {
-    sendMessage();
-  };
+  const { isStompClientConnected, sendDrawAction, sendCursor, addEventToStompClient } =
+    useStompClient();
+  useCanvasEvent({ isStompClientConnected, sendDrawAction, sendCursor, addEventToStompClient });
 
-  return (
-    <>
-      <div id="hello" onClick={handleClick}>
-        Hello !!
-      </div>
-    </>
-  );
+  return <canvas id="web-paint-canvas" />;
 }
 
 export default App;
