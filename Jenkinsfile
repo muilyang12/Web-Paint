@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git url: "https://github.com/muilyang12/Web-Paint.git", branch: "main"
+                git url: "https://github.com/muilyang12/Web-Paint", branch: "main"
             }
         }
 
