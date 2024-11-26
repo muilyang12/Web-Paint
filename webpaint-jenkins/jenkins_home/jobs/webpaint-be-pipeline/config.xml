@@ -43,14 +43,18 @@
         stage(&quot;Docker Build&quot;) {
             steps {
                 dir(&quot;webpaint-be&quot;) {
-                    sh &quot;docker build -t webpaint-be .&quot;
+                    sh &quot;docker build -t webpaint-be:${BUILD_NUMBER} .&quot;
                 }
             }
         }
 
         stage(&quot;Deploy&quot;) {
             steps {
-                sh &quot;docker run -d -p 8080:8080 --name webpaint-be webpaint-be&quot;
+                sh &quot;&quot;&quot;
+                    docker stop webpaint-be || true
+                    docker rm webpaint-be || true
+                    docker run -d -p 8080:8080 --name webpaint-be webpaint-be:${BUILD_NUMBER}
+                &quot;&quot;&quot;
             }
         }
     }
