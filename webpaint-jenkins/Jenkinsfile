@@ -28,14 +28,18 @@ pipeline {
         stage("Docker Build") {
             steps {
                 dir("webpaint-be") {
-                    sh "docker build -t webpaint-be ."
+                    sh "docker build -t webpaint-be:${BUILD_NUMBER} ."
                 }
             }
         }
 
         stage("Deploy") {
             steps {
-                sh "docker run -d -p 8080:8080 --name webpaint-be webpaint-be"
+                sh """
+                    docker stop webpaint-be || true
+                    docker rm webpaint-be || true
+                    docker run -d -p 8080:8080 --name webpaint-be webpaint-be:${BUILD_NUMBER}
+                """
             }
         }
     }
